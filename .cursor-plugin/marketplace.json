@@ -1,0 +1,15 @@
+{
+  "name": "allium-labs",
+  "owner": {
+    "name": "Allium Labs",
+    "url": "https://www.allium.so/"
+  },
+  "plugins": [
+    {
+      "name": "allium",
+      "source": "./plugins/allium",
+      "description": "Query blockchain data across 150+ chains using Allium in Cursor",
+      "version": "0.1.0"
+    }
+  ]
+}

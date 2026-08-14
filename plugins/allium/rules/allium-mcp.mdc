@@ -1,0 +1,15 @@
+---
+description: How to use the Allium MCP tools for blockchain data questions
+alwaysApply: true
+---
+
+allium-mcp:
+
+- Before writing or running any SQL against Allium, call `get_skill(name="sql-optimization")` and follow it.
+- Find tables with `search_schemas` before writing SQL. Do not guess table or column names.
+- Run SQL with `run_sql_query`, then fetch rows with `get_query_run_results`.
+- For dashboards, call `get_skill(name="dashboard-design")`; for charts, `get_skill(name="explorer-visuals")`. These schemas are generated server-side — always read them fresh, never from memory.
+- Check `search_terminal` for an existing public dashboard before building a new one.
+- Filter on `block_timestamp` (the clustering key) and default to a recent window: 7 days for exploration, 30 days for trends.
+- Lowercase EVM addresses before filtering or joining. Do not lowercase Solana, Tron, or Sui addresses — they are case-sensitive.
+- For "what chains does Allium support?", read the product-guide skill's canonical list. Never answer from memory.

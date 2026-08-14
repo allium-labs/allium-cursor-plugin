@@ -1,0 +1,30 @@
+{
+  "name": "allium",
+  "displayName": "Allium",
+  "version": "0.1.0",
+  "description": "Query blockchain data across 150+ chains using Allium in Cursor",
+  "author": {
+    "name": "Allium Labs",
+    "url": "https://www.allium.so/"
+  },
+  "homepage": "https://github.com/allium-labs/allium-cursor-plugin",
+  "license": "MIT",
+  "logo": "assets/logo.png",
+  "keywords": [
+    "allium",
+    "blockchain",
+    "crypto",
+    "sql",
+    "snowflake",
+    "data",
+    "mcp",
+    "analytics"
+  ],
+  "category": "integrations",
+  "tags": [
+    "blockchain",
+    "data",
+    "sql",
+    "analytics"
+  ]
+}
