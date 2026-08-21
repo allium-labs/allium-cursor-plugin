@@ -137,7 +137,6 @@ allium-cursor-plugin/
     │   └── allium-query.md
     ├── rules/                       # Always-applied Cursor rules
     │   └── allium-mcp.mdc
-    ├── assets/                      # Marketplace logo
     └── skills/                      # All skills as SKILL.md files
         ├── sql-optimization/
         ├── product-guide/
