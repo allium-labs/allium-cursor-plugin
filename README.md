@@ -17,7 +17,7 @@ This plugin allows Cursor users to install everything — Skills + Agents + MCP 
 Cursor automatically connects to Allium's hosted MCP server at:
 
 ```
-https://mcp-oauth.allium.so
+https://mcp.allium.so
 ```
 
 This provides tools to:
