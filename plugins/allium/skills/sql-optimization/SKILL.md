@@ -4,7 +4,7 @@ description: |
   **Required reading before writing or running any SQL.** Patterns for Snowflake
   query performance and chain-specific pitfalls.
 
-  Covers: default time ranges, partition-pruning rules, CTE filtering, `QUALIFY`
+  Covers: never querying deprecated tables, default time ranges, partition-pruning rules, CTE filtering, `QUALIFY`
   for dedup, `UNION ALL` over `UNION`, `APPROX_COUNT_DISTINCT` for exploration,
   pre-aggregated `*.metrics.*` tables vs raw aggregation, EVM address lowercasing
   (and when not to), per-chain vs `crosschain.*` tables, verifying guessed
@@ -41,6 +41,23 @@ If they do not, verify the value from the table before using it as a filter.
 **If a query unexpectedly returns 0 rows, check categorical filters before
 concluding the data is missing.** Re-run with `SELECT DISTINCT` or a `LIKE
 '%term%'` pattern.
+
+## Never Query a Deprecated Table
+
+A `search_schemas` hit with `deprecated: true` is retired. It still returns
+rows, but the data is frozen or incomplete, so the query succeeds and the
+answer is wrong. A query that runs cleanly does not prove the table is
+current.
+
+- Call `search_docs` on the table name to get the reason the table was retired
+  and the table that replaced it. Most deprecated tables have no
+  `replacement_table` value, so the docs are usually the only place the
+  current table is named. Use `replacement_table` when the hit has one.
+- Check every table in the query, including the tables in `JOIN`s. If a table
+  did not come from a `search_schemas` hit in this session, look it up with
+  `search_schemas(id="<db>.<schema>.<table>")` before you use it.
+- If the user asks for a deprecated table, tell them it is retired and why,
+  then query the replacement.
 
 ## SQL Pitfalls (Always Apply)
 
@@ -103,6 +120,13 @@ fees, market cap, open interest, etc. — `search_schemas` for a `metrics` table
 first. Only fall back to raw tables when the metrics table lacks the dimension
 or granularity the question needs (e.g., per-wallet breakdown, sub-daily
 resolution).
+
+One layer above that, the metrics catalog answers some questions with no SQL at
+all. If `list_catalog_metrics` is available, call it before writing a query
+about stablecoins, RWAs, issuers, lending, DEXes or payments, and read any
+matching metric with `get_catalog_metric`. Write SQL when the catalog has no
+metric for the subject, or when the question needs a dimension, granularity or
+join the catalog does not expose.
 
 ## Snowflake Performance Patterns
 

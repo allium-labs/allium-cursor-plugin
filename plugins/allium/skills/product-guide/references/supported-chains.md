@@ -13,14 +13,14 @@ that product in this file.
 - Historical data (Explorer, Datashares, Datastreams — one shared data
   platform): <https://docs.allium.so/historical-data/supported-blockchains>
 - Realtime APIs: <https://docs.allium.so/api/developer/availability> — also
-  live via the `realtime_get_supported_chains` tool
+  live via the `get_realtime_supported_chains` tool
   (`/api/v1/supported-chains/realtime-apis/simple`), which is the
   up-to-the-minute source; the Realtime table below is a dated snapshot.
 
 ## Headline totals
 
 - **Historical data platform (Explorer / Datashares / Datastreams): 135 chains** (as of 2026-07-22).
-- **Realtime APIs: 24 chains** (live snapshot as of 2026-07-22; call `realtime_get_supported_chains` for the current list).
+- **Realtime APIs: 24 chains** (live snapshot as of 2026-07-22; call `get_realtime_supported_chains` for the current list).
 
 Ecosystem breakdown (historical): EVM 99, SVM 3, Move 4, Cosmos SDK 10, Bitcoin/UTXO 5, Other: Chain 14.
 
@@ -174,7 +174,7 @@ for that chain. **Realtime** marks chains also served by the Realtime APIs.
 
 ## Realtime APIs
 
-24 chains (dated snapshot; `realtime_get_supported_chains` is authoritative).
+24 chains (dated snapshot; `get_realtime_supported_chains` is authoritative).
 
 | Chain | Type | Availability | Endpoint groups |
 |---|---|---|---|

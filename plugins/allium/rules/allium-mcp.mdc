@@ -7,9 +7,12 @@ allium-mcp:
 
 - Before writing or running any SQL against Allium, call `get_skill(name="sql-optimization")` and follow it.
 - Find tables with `search_schemas` before writing SQL. Do not guess table or column names.
-- Run SQL with `run_sql_query`, then fetch rows with `get_query_run_results`.
+- For stablecoins, RWAs, issuers, lending, DEXes, or payments, call `list_catalog_metrics` when it is available and read a matching metric with `get_catalog_metric` before writing SQL.
+- Run SQL with `run_sql_query`, then fetch rows with `get_query_run_results`. When `row_count` equals `row_limit`, the run stopped at its limit and the true total is unknown; say so and aggregate in SQL.
 - For dashboards, call `get_skill(name="dashboard-design")`; for charts, `get_skill(name="explorer-visuals")`. These schemas are generated server-side — always read them fresh, never from memory.
-- Check `search_terminal` for an existing public dashboard before building a new one.
+- Check `search_terminal` for an existing public Terminal dashboard before building a new one. Find the user's own Explorer dashboards with `search_dashboards` and read them with `read_dashboard`, never with `search_terminal`.
+- For live per-wallet or per-token data (prices, balances, positions, P&L, Hyperliquid), use the Realtime tools. Call `get_realtime_supported_chains` once per session and check chain support first. Each Realtime call is billed.
+- Scheduled query runs use EUs. Call `list_query_schedules` first, and confirm the cron with the user before `set_query_schedules`.
 - Filter on `block_timestamp` (the clustering key) and default to a recent window: 7 days for exploration, 30 days for trends.
 - Lowercase EVM addresses before filtering or joining. Do not lowercase Solana, Tron, or Sui addresses — they are case-sensitive.
 - For "what chains does Allium support?", read the product-guide skill's canonical list. Never answer from memory.

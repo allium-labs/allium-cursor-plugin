@@ -116,7 +116,7 @@ an unsaved `run_sql_query` result.
 
 **Single result** — if the investigation produced one load-bearing query, that's usually
 enough on its own: optionally call `create_explorer_visual` on it (chart/value/table — pick
-the type that fits the data) and `share_explorer_query` to hand back a link. Skip the rest
+the type that fits the data) and, if `share_explorer_query` is available, call it to hand back a link. Skip the rest
 of this step.
 
 **Multiple results meant to become a dashboard** — the Allium Assistant in the app builds

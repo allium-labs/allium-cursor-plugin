@@ -8,8 +8,8 @@
     {
       "name": "allium",
       "source": "./plugins/allium",
-      "description": "Query blockchain data across 150+ chains using Allium in Cursor",
-      "version": "0.1.0"
+      "description": "Query blockchain data across 135+ chains using Allium in Cursor",
+      "version": "0.1.1"
     }
   ]
 }
