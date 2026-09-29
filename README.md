@@ -3,7 +3,7 @@
 This repository provides a Cursor plugin that bundles:
 
 - **Allium Skills** that teach the AI how to query blockchain data correctly the first time
-- The **[Allium MCP Server](https://docs.allium.so/ai/mcp)**, which gives an agent live access to Allium's data warehouse across 150+ chains
+- The **[Allium MCP Server](https://docs.allium.so/ai/mcp)**, which gives an agent live access to Allium's data warehouse across 135+ chains
 - A curated set of **Agents** and **Rules** that make common analytical workflows fast and natural
 
 This plugin allows Cursor users to install everything — Skills + Agents + MCP server — with one click.
@@ -25,6 +25,8 @@ This provides tools to:
 - Search schemas and documentation
 - Run SQL against the data warehouse and fetch results
 - Create, read, and update Explorer queries, visuals, and dashboards
+- Schedule Explorer query refreshes
+- Read curated metrics from the metrics catalog, where your plan includes it
 - Browse public Terminal dashboards
 - Query Realtime prices, balances, positions, and transactions
 
@@ -54,6 +56,7 @@ time, because those schemas are generated from live API models.
 | `sql-expert` | Write and optimize queries with joins, CTEs, and window functions |
 | `docs-expert` | Answer questions on data models, schemas, and API usage |
 | `dashboard-builder` | Build a dashboard from existing Explorer queries |
+| `realtime-expert` | Read live prices, balances, P&L, and Hyperliquid data |
 
 ### Available Commands
 
@@ -78,7 +81,8 @@ allium-labs/allium-cursor-plugin
 ## Authentication
 
 The Allium MCP server supports **OAuth**. You'll be prompted to authenticate with your
-Allium account when first using the plugin. Register at
+Allium account when first using the plugin. To use an API key instead, send it as
+`Authorization: Bearer <api_key>`. Register at
 [app.allium.so](https://app.allium.so/) if you don't have one.
 
 ---
@@ -99,6 +103,11 @@ Allium account when first using the plugin. Register at
 
 - "How has tokenized RWA treasury supply grown over the past 6 months?"
 - "Why does our stablecoin volume look different from the public dashboard?"
+
+### Read live data
+
+- "What does this wallet hold right now, and what's its P&L?"
+- "Chart ETH's price over the last 90 days"
 
 ### Build a dashboard
 

@@ -27,7 +27,7 @@ APIs serve a smaller, separate set of chains.
 >
 > 1. Fetch the **Allium Supported Chains — Canonical List** reference file (see
 >    "Reference files" below) and quote it. For an up-to-the-minute Realtime
->    figure, call the `realtime_get_supported_chains` tool.
+>    figure, call the `get_realtime_supported_chains` tool.
 > 2. Always say **which product** a count refers to — the historical data
 >    platform (Explorer / Datashares / Datastreams) and the Realtime APIs have
 >    different totals.
@@ -98,7 +98,7 @@ by Snowflake (OLAP).
 **What it is:** Production-grade REST APIs delivering real-time, enriched
 blockchain data with 50-100ms response times and 3-5 second data freshness.
 Realtime covers fewer chains than the historical data platform — quote the
-canonical chain list (or the live `realtime_get_supported_chains` tool) for the
+canonical chain list (or the live `get_realtime_supported_chains` tool) for the
 exact set and count.
 
 **Key capabilities:**
@@ -154,7 +154,7 @@ guaranteed delivery.
   - Data source filters (dynamic address/contract lists, updateable without restart)
   - Declarative JSON filters with `=`, `!=`, `>`, `<`, `in`, `exists`, `AND`/`OR`
   - Workflows: `source → filter → destination`
-- **Beam** (custom transforms) — JavaScript v8 transforms and redis set filters on any stream, with Kafka/SNS sinks. See `beam-pipelines` skill for details
+- **Beam** (custom transforms) — JavaScript v8 transforms and redis set filters on any stream, with Kafka, SNS, external Kafka, webhook and NATS JetStream sinks. See `beam-pipelines` skill for details
 - Compression (lz4, zstd, gzip)
 - WebSocket streaming of all Kafka topics for simpler integration
 
