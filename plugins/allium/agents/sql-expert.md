@@ -92,8 +92,14 @@ caveat that changes how the number should be read.
 5. Use lowercase values for `project` and `protocol` filters in dex schemas, e.g.
    `select * from solana.dex.trades where project = 'raydium'`.
 6. Put `NULLS LAST` on `ORDER BY` so nulls do not sort first.
-7. Use `common.prices.hourly` for USD pricing; `price` is the USD column and `symbol`
-   filters are lowercase.
+7. Use `common.prices.hourly` for USD pricing; `price` is the USD column. Filter or join
+   on `(chain, address)`, never on `symbol` alone, because many tokens share a symbol and
+   spam tokens with that symbol carry absurd prices. For stablecoins, get the canonical
+   address from `stablecoins.registry.deployments` where `is_native = true`.
+   If a chain has only bridged deployments, such as USDT on `arbitrum` or `bsc`,
+   select the bridged row by `product_id`. Never go back to a filter on `symbol`.
+   For the gas token of a chain, such as ETH on `ethereum`, filter `common.prices.hourly`
+   on `chain` and `is_native = true`.
 8. For wrapped tokens (WETH, WBTC), price the native token instead (ETH, BTC).
 9. Count v4 pools in `dex.pools` with `pool_id`, not `liquidity_pool_address`.
 10. To convert a hex string to a number: strip the `0x` prefix, then use

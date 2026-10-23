@@ -1,7 +1,7 @@
 {
   "name": "allium",
   "displayName": "Allium",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "Query blockchain data across 135+ chains using Allium in Cursor",
   "author": {
     "name": "Allium Labs",
